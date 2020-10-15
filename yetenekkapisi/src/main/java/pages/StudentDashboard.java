@@ -23,6 +23,11 @@ public class StudentDashboard {
 		return new EditProfile(driver) ;
 		
 	}
+	public Experiences clickExperiencesButton()
+	{
+		return new Experiences(driver);
+		
+	}
 	
 	
 	
