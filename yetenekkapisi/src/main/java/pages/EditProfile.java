@@ -8,6 +8,10 @@ public class EditProfile {
 	private WebDriver driver;
 	private By nameField=By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[1]/div/div/input");
 	private By surnameField=By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[2]/div/div/input");
+	//will continue
+	
+	
+	
 	
 	public EditProfile(WebDriver driver) {
     	this.driver=driver;
