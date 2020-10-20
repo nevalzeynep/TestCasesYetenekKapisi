@@ -55,7 +55,7 @@ public class LoginPage {
     public StudentRegister clickStdRegisterButton()
     {
     	
-    	driver.findElement(LoginButton).click();
+    	driver.findElement(StudentRegisterButton).click();
     	return new StudentRegister(driver);
     	
     }
