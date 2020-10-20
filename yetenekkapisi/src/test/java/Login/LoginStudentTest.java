@@ -5,18 +5,21 @@ import org.testng.annotations.Test;
 import Base.BaseTests;
 
 public class LoginStudentTest extends BaseTests{
-	@Test
+	@Test(priority =0)
 	
-public void TestSuccesLogin(){
+public void TestSuccesLogin() 
+	{
 	
 
 		// assign this new object for the dashboard page
-		homePage.setUsername("nazan-saribiyik@hotmail.com");
-		homePage.setPassword("nazan970");
-		homePage.clickStudentLogin();
+		LoginPage.setUsername("nazan-saribiyik@hotmail.com");
+		LoginPage.setPassword("nazan970");
+		LoginPage.clickStudentLogin();
 		
 		
 		
 	}
+	// add login with show password click
+	//add login with fail login
 
 }

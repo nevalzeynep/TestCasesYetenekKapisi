@@ -10,9 +10,9 @@ public class EditProfilTest extends BaseTests {
 	@Test
 	public void TestSuccesEditProfile()
 	{
-		homePage.setUsername("nazan-saribiyik@hotmail.com");
-		homePage.setPassword("nazan970");
-		StudentDashboard stdDashboard=homePage.clickStudentLogin();
+		LoginPage.setUsername("nazan-saribiyik@hotmail.com");
+		LoginPage.setPassword("nazan970");
+		StudentDashboard stdDashboard=LoginPage.clickStudentLogin();
 		EditProfile profile=stdDashboard.clickEditProfileButton();
 		profile.SetName("nazan nazli");
 		profile.SetSurname("saribiyik");

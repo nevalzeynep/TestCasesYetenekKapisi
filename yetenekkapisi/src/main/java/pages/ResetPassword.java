@@ -21,19 +21,19 @@ public class ResetPassword {
 	
 	//clickbutton methods
 	
-	public HomePage clickEmailLink()
+	public LoginPage clickEmailLink()
 	{
 		driver.findElement(EmailRadioButton).click();
 		driver.findElement(SendLinkButton).click();
-		return new HomePage(driver);
+		return new LoginPage(driver);
 		
 		
 	}
-	public HomePage clickPhoneLink()
+	public LoginPage clickPhoneLink()
 	{
 		driver.findElement(PhoneRadioButton).click();
 		driver.findElement(SendLinkButton).click();
-		return new HomePage(driver);
+		return new LoginPage(driver);
 		
 	}
 	

@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2020-10-15T22:42:31 TRT" name="Default suite" finished-at="2020-10-15T22:42:44 TRT" duration-ms="13495">
+  <suite started-at="2020-10-20T21:05:46 TRT" name="Default suite" finished-at="2020-10-20T21:06:01 TRT" duration-ms="15054">
     <groups>
     </groups>
-    <test started-at="2020-10-15T22:42:31 TRT" name="Default test" finished-at="2020-10-15T22:42:44 TRT" duration-ms="13495">
-      <class name="ResetPassword.ResetPasswordTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:ResetPassword.ResetPasswordTest@865dd6]" started-at="2020-10-15T22:42:31 TRT" name="setUp" finished-at="2020-10-15T22:42:39 TRT" duration-ms="7831" status="PASS">
+    <test started-at="2020-10-20T21:05:46 TRT" name="Default test" finished-at="2020-10-20T21:06:01 TRT" duration-ms="15054">
+      <class name="EdtiProfile.EditProfilTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:EdtiProfile.EditProfilTest@1649b0e6]" started-at="2020-10-20T21:05:46 TRT" name="setUp" finished-at="2020-10-20T21:05:54 TRT" duration-ms="8115" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="SuccesEmailResetPasswordTest()[pri:0, instance:ResetPassword.ResetPasswordTest@865dd6]" started-at="2020-10-15T22:42:39 TRT" name="SuccesEmailResetPasswordTest" finished-at="2020-10-15T22:42:39 TRT" duration-ms="360" status="PASS">
+        <test-method signature="TestSuccesEditProfile()[pri:0, instance:EdtiProfile.EditProfilTest@1649b0e6]" started-at="2020-10-20T21:05:54 TRT" name="TestSuccesEditProfile" finished-at="2020-10-20T21:05:57 TRT" duration-ms="2223" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- SuccesEmailResetPasswordTest -->
-        <test-method signature="SuccesPhoneResetPasswordTest()[pri:0, instance:ResetPassword.ResetPasswordTest@865dd6]" started-at="2020-10-15T22:42:39 TRT" name="SuccesPhoneResetPasswordTest" finished-at="2020-10-15T22:42:40 TRT" duration-ms="623" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- SuccesPhoneResetPasswordTest -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:ResetPassword.ResetPasswordTest@865dd6]" started-at="2020-10-15T22:42:40 TRT" name="tearDown" finished-at="2020-10-15T22:42:44 TRT" duration-ms="4644" status="PASS">
+        </test-method> <!-- TestSuccesEditProfile -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:EdtiProfile.EditProfilTest@1649b0e6]" started-at="2020-10-20T21:05:57 TRT" name="tearDown" finished-at="2020-10-20T21:06:01 TRT" duration-ms="4686" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- ResetPassword.ResetPasswordTest -->
+      </class> <!-- EdtiProfile.EditProfilTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

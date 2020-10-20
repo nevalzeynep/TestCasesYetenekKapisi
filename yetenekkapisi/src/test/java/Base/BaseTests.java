@@ -7,12 +7,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
-import pages.HomePage;
+import pages.LoginPage;
 
 public class BaseTests {
 	
 	private WebDriver driver;
-	protected HomePage homePage;
+	protected LoginPage LoginPage;
 	@BeforeClass
 	public void setUp()
 	{
@@ -23,7 +23,7 @@ public class BaseTests {
 	    
 	    //once the app is launch homepage will be open every time
 	    
-	     homePage=new HomePage(driver);
+	     LoginPage=new LoginPage(driver);
 	    driver.manage().window().maximize();
 	    driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 	    
