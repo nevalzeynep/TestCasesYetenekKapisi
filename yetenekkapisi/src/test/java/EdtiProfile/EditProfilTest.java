@@ -17,6 +17,7 @@ public class EditProfilTest extends BaseTests {
 		profile.SetName("nazan nazli");
 		profile.SetSurname("saribiyik");
 		Thread.sleep(4000);
+		Thread.sleep(4000);
 	}
 
 }
