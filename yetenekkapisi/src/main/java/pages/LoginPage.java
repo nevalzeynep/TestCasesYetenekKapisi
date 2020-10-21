@@ -24,7 +24,7 @@ public class LoginPage {
     }
    
 
-	// when test case pass username and password
+	//  test case  set username and password
     public void setUsername(String username)
     
     {
