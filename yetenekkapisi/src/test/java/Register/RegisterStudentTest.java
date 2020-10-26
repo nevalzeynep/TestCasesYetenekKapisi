@@ -22,7 +22,8 @@ public class RegisterStudentTest extends BaseTests {
 		registerstd.setEducationType();
 		registerstd.setCountry();
 		registerstd.setUniversity();
-		//registerstd.setDepartment("Test");
+		registerstd.setDepartment();
+		registerstd.clickClarifacitonButton();
 		
 		
 	}

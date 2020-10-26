@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2020-10-21T22:27:34 TRT" name="Default suite" finished-at="2020-10-21T22:27:48 TRT" duration-ms="14233">
+  <suite started-at="2020-10-26T23:22:44 TRT" name="Default suite" finished-at="2020-10-26T23:23:18 TRT" duration-ms="33758">
     <groups>
     </groups>
-    <test started-at="2020-10-21T22:27:34 TRT" name="Default test" finished-at="2020-10-21T22:27:48 TRT" duration-ms="14233">
+    <test started-at="2020-10-26T23:22:44 TRT" name="Default test" finished-at="2020-10-26T23:23:18 TRT" duration-ms="33758">
       <class name="Register.RegisterStudentTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:Register.RegisterStudentTest@1649b0e6]" started-at="2020-10-21T22:27:34 TRT" name="setUp" finished-at="2020-10-21T22:27:42 TRT" duration-ms="8233" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:Register.RegisterStudentTest@1649b0e6]" started-at="2020-10-26T23:22:44 TRT" name="setUp" finished-at="2020-10-26T23:22:52 TRT" duration-ms="7867" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="succesGraduatedRegisterTest()[pri:0, instance:Register.RegisterStudentTest@1649b0e6]" started-at="2020-10-21T22:27:42 TRT" name="succesGraduatedRegisterTest" finished-at="2020-10-21T22:27:43 TRT" duration-ms="1321" status="PASS">
+        <test-method signature="succesGraduatedRegisterTest()[pri:0, instance:Register.RegisterStudentTest@1649b0e6]" started-at="2020-10-26T23:22:52 TRT" name="succesGraduatedRegisterTest" finished-at="2020-10-26T23:23:13 TRT" duration-ms="21275" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- succesGraduatedRegisterTest -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:Register.RegisterStudentTest@1649b0e6]" started-at="2020-10-21T22:27:43 TRT" name="tearDown" finished-at="2020-10-21T22:27:48 TRT" duration-ms="4643" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:Register.RegisterStudentTest@1649b0e6]" started-at="2020-10-26T23:23:13 TRT" name="tearDown" finished-at="2020-10-26T23:23:18 TRT" duration-ms="4576" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

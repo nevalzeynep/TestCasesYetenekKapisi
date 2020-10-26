@@ -13,6 +13,7 @@ public class StudentRegister {
 	private By emailField=By.name("email");
 	private By phoneField=By.name("phone");
 	private By departmentField=By.name("otherDepartment");
+	private By clarificationTextButton=By.xpath("//*[@id=\"modalButton\"]");
     
 	public StudentRegister(WebDriver driver) {
 	    	this.driver=driver;
@@ -31,15 +32,12 @@ public class StudentRegister {
 		 driver.findElement(surnameField).sendKeys(surname);
 	 }
 	 
-	 public void setDisabledStatus() 
+	 public void setDisabledStatus() throws InterruptedException 
 	 {
-		 WebElement selectMyElement = driver.findElement(By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[4]/div/div/div/div/div[1]/div[1]"));
-		 selectMyElement.click();
-		 selectWebElement();
+		 
+		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[4]/div/div/div/div");
 	 }
 	 
-
-
 	 
 	 public void setEmail(String mail) {
 		 driver.findElement(emailField).sendKeys(mail);
@@ -48,47 +46,61 @@ public class StudentRegister {
 	 public void setPhone(String phone) {
 		 driver.findElement(phoneField).sendKeys(phone);
 	 }
-	 public void setStatus()
+	 public void setStatus() throws InterruptedException
 	 {
-		 WebElement selectMyElement = driver.findElement(By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[8]/div/div/div/div"));
-		 selectMyElement.click();
-		 selectWebElement();
+		
+		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[8]/div/div/div/div");
 	 }
-	 public void setEducationType()
+	 public void setEducationType() throws InterruptedException
 	 {
-		 WebElement selectMyElement = driver.findElement(By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[9]/div/div/div/div"));
-		 selectMyElement.click();
-		 selectWebElement();
+		 
+		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[9]/div/div/div/div");
 	 }
+	 public void setClassLevel()
 	 
+	 {
+		 
+	 }
 	 public void setCountry()
 	 {
 		 WebElement selectMyElement = driver.findElement(By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[10]/div/div/div/div"));
 		 selectMyElement.click();
 		 Actions keyDown = new Actions(driver); 
 		 keyDown.sendKeys(Keys.chord( Keys.ENTER)).perform();
-		 //selectWebElement();
+         //selectWebElement();
 	 }
-	 public void setUniversity()
+	 public void setUniversity() throws InterruptedException
 	 {
-		 WebElement selectMyElement = driver.findElement(By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[11]/div/div/div/div"));
-		 selectMyElement.click();
-		 selectWebElement();
+		 
+		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[11]/div/div/div/div");
 		
+	 }
+	 public void setDepartment() throws InterruptedException
+	 {
+		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[12]/div/div/div/div");
 	 }
 	 
 	 
 	//click buttons methods
 	 
-	 
+	 public void clickClarifacitonButton()
+	    {
+	    	driver.findElement(clarificationTextButton).click();
+			
+	    	
+	    }
 	 
 	 // private methods
 	 
-	 private void selectWebElement( ) 
+	 private void selectWebElement( String Path) throws InterruptedException 
 	 {
-		 
+		 Thread.sleep(1000);
+		 WebElement selectMyElement = driver.findElement(By.xpath(Path));
+		 selectMyElement.click();
 		 Actions keyDown = new Actions(driver); 
-		 keyDown.sendKeys(Keys.chord( Keys.ENTER,Keys.ENTER)).perform();
+		 keyDown.sendKeys(Keys.chord(  Keys.DOWN,Keys.DOWN,Keys.ENTER)).perform();
+		
+		
 		
 	 }
 	 
