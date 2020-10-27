@@ -10,7 +10,7 @@ import pages.StudentRegister;
 public class RegisterStudentTest extends BaseTests {
 	
 	@Test
-	public void succesGraduatedRegisterTest() throws InterruptedException
+	public void succesStudentRegisterTest() throws InterruptedException
 	{
 		StudentRegister registerstd=LoginPage.clickStdRegisterButton();
 		registerstd.setName("test");
@@ -24,6 +24,8 @@ public class RegisterStudentTest extends BaseTests {
 		registerstd.setUniversity();
 		registerstd.setDepartment();
 		registerstd.clickClarifacitonButton();
+		registerstd.clickConsenText();
+		registerstd.clickSendButton();
 		
 		
 	}

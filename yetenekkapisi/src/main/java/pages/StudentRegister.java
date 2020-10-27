@@ -1,12 +1,14 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 public class StudentRegister {
+	
 	private WebDriver driver;
 	private By nameField= (By.name("name"));
 	private By surnameField= (By.name("surname"));
@@ -14,7 +16,9 @@ public class StudentRegister {
 	private By phoneField=By.name("phone");
 	private By departmentField=By.name("otherDepartment");
 	private By clarificationTextButton=By.xpath("//*[@id=\"modalButton\"]");
-    
+	private By radio1=By.xpath("/html/body/div/div[1]/div/div/main/div/div/div/div/form/div[14]/div/div/div/label[1]/span[1]");
+	private By radio2=By.xpath("/html/body/div/div[1]/div/div/main/div/div/div/div/form/div[14]/div/div/div/label[2]/span[1]");
+	private By sendButton=By.xpath("/html/body/div/div[1]/div/div/main/div/div/div/div/form/div[15]/button[1]");
 	public StudentRegister(WebDriver driver) {
 	    	this.driver=driver;
 	    	
@@ -67,7 +71,7 @@ public class StudentRegister {
 		 selectMyElement.click();
 		 Actions keyDown = new Actions(driver); 
 		 keyDown.sendKeys(Keys.chord( Keys.ENTER)).perform();
-         //selectWebElement();
+         
 	 }
 	 public void setUniversity() throws InterruptedException
 	 {
@@ -81,14 +85,29 @@ public class StudentRegister {
 	 }
 	 
 	 
-	//click buttons methods
+	  //click buttons methods
 	 
-	 public void clickClarifacitonButton()
+	 public void clickClarifacitonButton() throws InterruptedException
 	    {
-	    	driver.findElement(clarificationTextButton).click();
-			
+		 
+		JavaScriptElement("//*[@id=\"modalButton\"]");
+		JavaScriptElement("/html/body/div[2]/div/div[1]/div/div/div[2]/div/div/div[2]/button");
+	    driver.findElement(radio1).click();
+	    driver.findElement(radio2).click();
 	    	
 	    }
+	 public void clickConsenText() throws InterruptedException
+	 {
+		 JavaScriptElement("/html/body/div/div[1]/div/div/main/div/div/div/div/form/div[14]/span/button");
+		 JavaScriptElement("/html/body/div[2]/div/div[1]/div/div/div[2]/div/div/div[2]/button");
+	 }
+	 
+	 
+	 public void clickSendButton()
+	 {
+		 driver.findElement(sendButton).click();
+	 }
+	 
 	 
 	 // private methods
 	 
@@ -103,6 +122,12 @@ public class StudentRegister {
 		
 		
 	 }
-	 
+	 private void JavaScriptElement(String path) throws InterruptedException
+	 {
+		 WebElement ele = driver.findElement(By.xpath(path));
+		 JavascriptExecutor executor = (JavascriptExecutor)driver;
+		 executor.executeScript("arguments[0].click();", ele);
+		 Thread.sleep(2000);
+	 }
 
 }
