@@ -3,7 +3,8 @@ package EdtiProfile;
 import org.testng.annotations.Test;
 
 import Base.BaseTests;
-import pages.EditProfile;
+
+import pages.EditProfilePage;
 import pages.StudentDashboard;
 
 public class EditProfilTest extends BaseTests {
@@ -13,12 +14,12 @@ public class EditProfilTest extends BaseTests {
 		LoginPage.setUsername("nazan-saribiyik@hotmail.com");
 		LoginPage.setPassword("nazan970");
 		StudentDashboard stdDashboard=LoginPage.clickStudentLogin();
-		EditProfile profile=stdDashboard.clickEditProfileButton();
-		profile.SetName("nazan nazli");
-		profile.SetSurname("saribiyik");
+	   EditProfilePage editprofile=stdDashboard.clickEditProfileButton();
+	   
+		editprofile.SetName("nazan nazli");
+		editprofile.SetSurname("saribiyik");
 		Thread.sleep(4000);
-		Thread.sleep(4000);
-		Thread.sleep(4000);
+		
 	}
 
 }

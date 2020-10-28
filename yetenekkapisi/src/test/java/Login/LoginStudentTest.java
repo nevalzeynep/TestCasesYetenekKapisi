@@ -1,12 +1,15 @@
 package Login;
 
+import static org.testng.Assert.assertEquals;
+
+import org.openqa.selenium.Alert;
 import org.testng.annotations.Test;
 
 import Base.BaseTests;
 
 public class LoginStudentTest extends BaseTests{
-	@Test(priority =0)
 	
+	@Test(priority=0)
 public void TestSuccesLogin() 
 	{
 	
@@ -19,7 +22,9 @@ public void TestSuccesLogin()
 		
 		
 	}
-	// add login with show password click
+	
+	
+	
 	//add login with fail login
 
 }

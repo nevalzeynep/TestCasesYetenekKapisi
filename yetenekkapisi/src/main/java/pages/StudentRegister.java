@@ -79,7 +79,7 @@ public class StudentRegister {
 	 public void setCountry(int flag,int flag2) throws InterruptedException
 	 {
 		 if(flag2==0) {
-		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[10]/div/div/div/div",flag);
+		     selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[10]/div/div/div/div",flag);
 		 }
 		 
 		 else
@@ -185,9 +185,11 @@ public class StudentRegister {
 	 }                    
 	
 	 
-	 public void clickSendButton()
+	 public LoginPage clickSendButton()
 	 {
 		 driver.findElement(sendButton).click();
+		return new LoginPage(driver);
+		 
 	 }
 	 
 	 
@@ -195,28 +197,22 @@ public class StudentRegister {
 	 
 	 private void selectWebElement( String Path,int flag) throws InterruptedException 
 	 {
-		 if(flag==1)
-		 {
-			 Thread.sleep(2000);
+		 Thread.sleep(2000);
 		 WebElement selectMyElement = driver.findElement(By.xpath(Path));
 		 selectMyElement.click();
 		 Actions keyDown = new Actions(driver); 
-		 keyDown.sendKeys(Keys.chord(Keys.ENTER)).perform();
-		
+		 for(int i=0;i<flag;i++)
+		 {
+			 keyDown.sendKeys(Keys.chord( Keys.DOWN )).perform();
 		 }
-		 else {
-			 Thread.sleep(2000);
-			 WebElement selectMyElement = driver.findElement(By.xpath(Path));
-			 selectMyElement.click();
-			 Actions keyDown = new Actions(driver); 
-			 keyDown.sendKeys(Keys.chord( Keys.DOWN ,Keys.ENTER)).perform();
-			
+		 keyDown.sendKeys(Keys.chord( Keys.ENTER )).perform();
+		 System.out.println(flag);
+		 
+		 
+		 
 			 
 		 }
-		
-		
-		
-	 }
+		 
 	 private void JavaScriptElement(String path) throws InterruptedException
 	 {
 		 WebElement ele = driver.findElement(By.xpath(path));

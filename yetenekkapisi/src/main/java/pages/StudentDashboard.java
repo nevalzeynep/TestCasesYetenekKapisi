@@ -6,8 +6,11 @@ import org.openqa.selenium.WebDriver;
 public class StudentDashboard {
 
 	private WebDriver driver;
-	private By profileButton=By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div[1]/div[2]/div/section/div[1]/div/div[1]/div/ul/div[1]/button");
+	private By accountButton=By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div[1]/div[2]/div/section/div[1]/div/div[1]/div/ul/div[1]/button");
 	private By EditProfileButton=By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div[1]/div[2]/div/section/div[1]/div/div[1]/div/ul/div[1]/div/ul/div/a[1]");
+	private By NameButton=By.xpath("/html/body/div/div[1]/div/div/main/div/div[1]/div[1]/div/div[2]/div[1]/button");
+	
+	
 	
 	public StudentDashboard(WebDriver driver) {
     	this.driver=driver;
@@ -16,18 +19,19 @@ public class StudentDashboard {
 	
 	//clickbutton methods
 	
-	public EditProfile clickEditProfileButton()
+	public EditProfilePage clickEditProfileButton()
 	{
-		driver.findElement(profileButton).click();
-		driver.findElement(EditProfileButton).click();
-		return new EditProfile(driver) ;
+		driver.findElement(accountButton).click();
+		clickLink("Profil");
+		return new EditProfilePage(driver) ;
 		
 	}
-	public Experiences clickExperiencesButton()
+	
+	private void clickLink(String LinkText)
 	{
-		return new Experiences(driver);
-		
+		driver.findElement(By.linkText(LinkText)).click();
 	}
+	
 	
 	
 	

@@ -16,17 +16,17 @@ public class RegisterStudentTest extends BaseTests {
 		registerstd.setName("test student");
 		registerstd.setSurname("test student");
 		registerstd.setDisabledStatus(0);
-		registerstd.setEmail("test@deneme.com");
+		registerstd.setEmail("test@denedme.com");
 		registerstd.setPhone("123456");
-		registerstd.setStatus(0);
-		registerstd.setEducationType(0);
-		registerstd.setClassLevel(1);
-		registerstd.setCountry(1,1);
-		registerstd.setUniversity(1,1);
-		registerstd.setDepartmentFromList(1,1);
+		registerstd.setStatus(1);
+		registerstd.setEducationType(1);
+		registerstd.setClassLevel(2);
+		registerstd.setCountry(0,1);
+		registerstd.setUniversity(0,1);
+		registerstd.setDepartmentFromList(4,1);
 		registerstd.clickClarifacitonButton(1);
 		registerstd.clickConsenText(1,"no");
-		registerstd.clickSendButton();
+		//registerstd.clickSendButton();
 		
 		
 	}

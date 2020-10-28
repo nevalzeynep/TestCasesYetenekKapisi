@@ -13,6 +13,7 @@ public class BaseTests {
 	
 	private WebDriver driver;
 	protected LoginPage LoginPage;
+	
 	@BeforeClass
 	public void setUp()
 	{
@@ -23,9 +24,10 @@ public class BaseTests {
 	    
 	    //once the app is launch homepage will be open every time
 	    
-	     LoginPage=new LoginPage(driver);
+	    LoginPage=new LoginPage(driver);
 	    driver.manage().window().maximize();
 	    driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+	    driver.manage().deleteAllCookies();
 	    
 	
 	}
