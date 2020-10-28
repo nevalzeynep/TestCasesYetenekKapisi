@@ -15,10 +15,13 @@ public class StudentRegister {
 	private By emailField=By.name("email");
 	private By phoneField=By.name("phone");
 	private By departmentField=By.name("otherDepartment");
+	private By otherDepartmentField=By.name("otherDepartment");
 	private By clarificationTextButton=By.xpath("//*[@id=\"modalButton\"]");
-	private By radio1=By.xpath("/html/body/div/div[1]/div/div/main/div/div/div/div/form/div[14]/div/div/div/label[1]/span[1]");
-	private By radio2=By.xpath("/html/body/div/div[1]/div/div/main/div/div/div/div/form/div[14]/div/div/div/label[2]/span[1]");
-	private By sendButton=By.xpath("/html/body/div/div[1]/div/div/main/div/div/div/div/form/div[15]/button[1]");
+	
+	private By sendButton=By.xpath("//button[@class='icon btn btn-primary btn-sm']");
+	
+	
+	
 	public StudentRegister(WebDriver driver) {
 	    	this.driver=driver;
 	    	
@@ -36,10 +39,10 @@ public class StudentRegister {
 		 driver.findElement(surnameField).sendKeys(surname);
 	 }
 	 
-	 public void setDisabledStatus() throws InterruptedException 
+	 public void setDisabledStatus(int flag) throws InterruptedException 
 	 {
 		 
-		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[4]/div/div/div/div");
+		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[4]/div/div/div/div",flag);
 	 }
 	 
 	 
@@ -50,58 +53,137 @@ public class StudentRegister {
 	 public void setPhone(String phone) {
 		 driver.findElement(phoneField).sendKeys(phone);
 	 }
-	 public void setStatus() throws InterruptedException
+	 
+	 
+	 public void setStatus(int flag) throws InterruptedException
 	 {
 		
-		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[8]/div/div/div/div");
+		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[8]/div/div/div/div",flag);
 	 }
-	 public void setEducationType() throws InterruptedException
+	 
+	 
+	 public void setEducationType(int flag) throws InterruptedException
 	 {
 		 
-		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[9]/div/div/div/div");
+		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[9]/div/div/div/div",flag);
 	 }
-	 public void setClassLevel()
+	 
+	 
+	 public void setClassLevel(int flag) throws InterruptedException
 	 
 	 {
-		 
+		 selectWebElement("/html/body/div/div[1]/div/div/main/div/div/div/div/form/div[10]/div/div/div/div", flag);
 	 }
-	 public void setCountry()
+	 
+	 
+	 public void setCountry(int flag,int flag2) throws InterruptedException
 	 {
-		 WebElement selectMyElement = driver.findElement(By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[10]/div/div/div/div"));
-		 selectMyElement.click();
-		 Actions keyDown = new Actions(driver); 
-		 keyDown.sendKeys(Keys.chord( Keys.ENTER)).perform();
+		 if(flag2==0) {
+		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[10]/div/div/div/div",flag);
+		 }
+		 
+		 else
+		 {
+			 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[11]/div/div/div/div",flag);
+		 }
+		
          
 	 }
-	 public void setUniversity() throws InterruptedException
+	 
+	 
+	 public void setUniversity(int flag,int flag2) throws InterruptedException
 	 {
+		 if(flag2==0) {
+			 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[11]/div/div/div/div",flag);
+		 }
 		 
-		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[11]/div/div/div/div");
+		 else {
+			 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[12]/div/div/div/div",flag);
+		 }
 		
 	 }
-	 public void setDepartment() throws InterruptedException
+	 
+	 
+	 public void setDepartmentFromList(int flag,int flag2) throws InterruptedException
 	 {
-		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[12]/div/div/div/div");
+		 if(flag2==0)
+		 {
+		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[12]/div/div/div/div",flag);
+		 }
+		 else
+		 {
+			 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[13]/div/div/div/div",flag);
+		 }
+		 
+		 
 	 }
+	 
+	 
+	 public void setDepartment(String department,int flag2)
+	 {
+		 if(flag2==0)
+		 {
+		 driver.findElement(otherDepartmentField).sendKeys(department);
+		 }
+		 else
+		 {
+			 driver.findElement(otherDepartmentField).sendKeys(department);
+		 }
+	 }
+	 
+	 
 	 
 	 
 	  //click buttons methods
 	 
-	 public void clickClarifacitonButton() throws InterruptedException
+	 public void clickClarifacitonButton(int flag2) throws InterruptedException
 	    {
-		 
-		JavaScriptElement("//*[@id=\"modalButton\"]");
+		 if(flag2==0)//mezun
+		 {
+		JavaScriptElement("/html/body/div/div[1]/div/div/main/div/div/div/div/form/div[13]/span/button");
 		JavaScriptElement("/html/body/div[2]/div/div[1]/div/div/div[2]/div/div/div[2]/button");
-	    driver.findElement(radio1).click();
-	    driver.findElement(radio2).click();
+		 }
+		 else
+		 {
+			    JavaScriptElement("/html/body/div/div[1]/div/div/main/div/div/div/div/form/div[14]/span/button");
+				JavaScriptElement("/html/body/div[2]/div/div[1]/div/div/div[2]/div/div/div[2]/button");
+		 }
+	 
 	    	
 	    }
-	 public void clickConsenText() throws InterruptedException
+	 public void clickConsenText(int flag2,String onay) throws InterruptedException
 	 {
-		 JavaScriptElement("/html/body/div/div[1]/div/div/main/div/div/div/div/form/div[14]/span/button");
-		 JavaScriptElement("/html/body/div[2]/div/div[1]/div/div/div[2]/div/div/div[2]/button");
-	 }
-	 
+		
+		  if(flag2==0) // mezun
+		  {
+			     JavaScriptElement("/html/body/div/div[1]/div/div/main/div/div/div/div/form/div[14]/span/button");
+				 JavaScriptElement("/html/body/div[2]/div/div[1]/div/div/div[2]/div/div/div[2]/button");
+			  if(onay=="yes")
+			  {
+				  driver.findElement(By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[14]/div/div/div/label[1]/span[1]")).click();
+			  }
+			  else
+			  {
+				  driver.findElement(By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[14]/div/div/div/label[2]/span[1]")).click();
+			  }
+		  }
+		  else// ogrenci
+		  {
+			     JavaScriptElement("/html/body/div/div[1]/div/div/main/div/div/div/div/form/div[15]/span/button");
+				 JavaScriptElement("/html/body/div[2]/div/div[1]/div/div/div[2]/div/div/div[2]/button");
+			  if(onay=="yes")
+			  {
+				  driver.findElement(By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[15]/div/div/div/label[1]/span[1]")).click();
+			  }
+			  else
+			  {
+				  driver.findElement(By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[15]/div/div/div/label[2]/span[1]")).click();
+			  }
+			  
+		  }
+
+	 }                    
+	
 	 
 	 public void clickSendButton()
 	 {
@@ -111,13 +193,26 @@ public class StudentRegister {
 	 
 	 // private methods
 	 
-	 private void selectWebElement( String Path) throws InterruptedException 
+	 private void selectWebElement( String Path,int flag) throws InterruptedException 
 	 {
-		 Thread.sleep(1000);
+		 if(flag==1)
+		 {
+			 Thread.sleep(2000);
 		 WebElement selectMyElement = driver.findElement(By.xpath(Path));
 		 selectMyElement.click();
 		 Actions keyDown = new Actions(driver); 
-		 keyDown.sendKeys(Keys.chord(  Keys.DOWN,Keys.DOWN,Keys.ENTER)).perform();
+		 keyDown.sendKeys(Keys.chord(Keys.ENTER)).perform();
+		
+		 }
+		 else {
+			 Thread.sleep(2000);
+			 WebElement selectMyElement = driver.findElement(By.xpath(Path));
+			 selectMyElement.click();
+			 Actions keyDown = new Actions(driver); 
+			 keyDown.sendKeys(Keys.chord( Keys.DOWN ,Keys.ENTER)).perform();
+			
+			 
+		 }
 		
 		
 		
