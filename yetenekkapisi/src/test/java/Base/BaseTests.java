@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 
 import pages.LoginPage;
@@ -19,7 +20,7 @@ public class BaseTests {
 	{
 		System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
 	    driver=new ChromeDriver();
-	    driver.get("https://www.yetenekkapisi.org/login");
+	    driver.get("https://demo.yetenekkapisi.org/login");
 	    
 	    
 	    //once the app is launch homepage will be open every time
@@ -38,6 +39,10 @@ public class BaseTests {
 		Thread.sleep(4000);
 		driver.quit();
 	}
-	
+	@AfterMethod
+	public void afterMethod() throws InterruptedException{
+		Thread.sleep(2000);
+		
+	}
 
 }

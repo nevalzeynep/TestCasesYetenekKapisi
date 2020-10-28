@@ -23,6 +23,7 @@ public class StudentDashboard {
 	{
 		driver.findElement(accountButton).click();
 		clickLink("Profil");
+		
 		return new EditProfilePage(driver) ;
 		
 	}
