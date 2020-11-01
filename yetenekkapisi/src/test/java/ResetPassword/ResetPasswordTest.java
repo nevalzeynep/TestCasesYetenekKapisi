@@ -11,7 +11,7 @@ public class ResetPasswordTest extends BaseTests {
 	public void SuccesPhoneResetPasswordTest()
 	{
 		ResetPassword rstpasw=LoginPage.clickForgotPasswordButon();
-		rstpasw.setEmail("nazan-saribiyik@hotmail.com");
+		rstpasw.setEmail("yekmogrenci@gmail.com");
 		rstpasw.clickPhoneLink();
 		
 	}
@@ -20,7 +20,7 @@ public class ResetPasswordTest extends BaseTests {
 	public void SuccesEmailResetPasswordTest()
 	{
 		ResetPassword rstpasw=LoginPage.clickForgotPasswordButon();
-		rstpasw.setEmail("nazan-saribiyik@hotmail.com");
+		rstpasw.setEmail("yekmogrenci@gmail.com");
 		rstpasw.clickEmailLink();
 		
 	}

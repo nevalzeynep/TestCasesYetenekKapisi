@@ -11,15 +11,17 @@ public class EditProfilTest extends BaseTests {
 	@Test
 	public void TestSuccesEditProfile() throws InterruptedException
 	{
-		LoginPage.setUsername("nazan-saribiyik@hotmail.com");
-		LoginPage.setPassword("nazan970");
+		LoginPage.setUsername("yekmogrenci@gmail.com");
+		LoginPage.setPassword("Y3K_StU3nt.462A.!");
 		StudentDashboard stdDashboard=LoginPage.clickStudentLogin();
 	    EditProfilePage editprofile=stdDashboard.clickEditProfileButton();
 	   
-		editprofile.SetName("nazan nazli");
-		editprofile.SetSurname("saribiyik");
+		editprofile.SetName("batuhan deneme");
+		editprofile.SetSurname("ekici deneme");
 		editprofile.setTckn("41546586464");
-		editprofile.setGender(0);
+		editprofile.setGender(0,"male");
+		editprofile.setMilitaryServiceStatus(1);
+		editprofile.setBirthDate();
 		editprofile.setnationality(6);
 		editprofile.setAddress("çankaya yýldýz 4/2");
 		editprofile.setCountry(0);

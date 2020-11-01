@@ -3,40 +3,6 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Register.RegisterGraduatedTest">
-        <methods>
-          <include name="afterMethod"/>
-          <include name="setUp"/>
-          <include name="succesGraduatedOtherCountryRegisterTest"/>
-          <include name="succesGraduatedRegisterTest"/>
-          <include name="tearDown"/>
-        </methods>
-      </class> <!-- Register.RegisterGraduatedTest -->
-      <class name="ResetPassword.ResetPasswordTest">
-        <methods>
-          <include name="SuccesPhoneResetPasswordTest"/>
-          <include name="afterMethod"/>
-          <include name="setUp"/>
-          <include name="SuccesEmailResetPasswordTest"/>
-          <include name="tearDown"/>
-        </methods>
-      </class> <!-- ResetPassword.ResetPasswordTest -->
-      <class name="Register.RegisterStudentTest">
-        <methods>
-          <include name="afterMethod"/>
-          <include name="setUp"/>
-          <include name="succesStudentRegisterTest"/>
-          <include name="tearDown"/>
-        </methods>
-      </class> <!-- Register.RegisterStudentTest -->
-      <class name="Login.LoginStudentPasswordTest">
-        <methods>
-          <include name="afterMethod"/>
-          <include name="setUp"/>
-          <include name="TestLoginSeePassword"/>
-          <include name="tearDown"/>
-        </methods>
-      </class> <!-- Login.LoginStudentPasswordTest -->
       <class name="EdtiProfile.EditProfilTest">
         <methods>
           <include name="TestSuccesEditProfile"/>
@@ -45,14 +11,6 @@
           <include name="tearDown"/>
         </methods>
       </class> <!-- EdtiProfile.EditProfilTest -->
-      <class name="Login.LoginStudentTest">
-        <methods>
-          <include name="afterMethod"/>
-          <include name="setUp"/>
-          <include name="TestSuccesLogin"/>
-          <include name="tearDown"/>
-        </methods>
-      </class> <!-- Login.LoginStudentTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

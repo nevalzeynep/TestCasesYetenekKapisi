@@ -14,8 +14,8 @@ public void TestSuccesLogin() {
 	
 
 		// assign this new object for the dashboard page
-		LoginPage.setUsername("nazan-saribiyik@hotmail.com");
-		LoginPage.setPassword("nazan970");
+		LoginPage.setUsername("yekmogrenci@gmail.com");
+		LoginPage.setPassword("Y3K_StU3nt.462A.!");
 		LoginPage.clickStudentLogin();
 	
 	}
