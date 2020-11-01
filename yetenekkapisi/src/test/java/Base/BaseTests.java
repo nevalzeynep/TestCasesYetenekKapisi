@@ -37,14 +37,10 @@ public class BaseTests {
 	
    public void tearDown() throws InterruptedException
 	{
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 		driver.quit();
 	}
-	@AfterMethod
-	public void afterMethod() throws InterruptedException{
-		Thread.sleep(2000);
-		
-	}
+	
 	
 	
 

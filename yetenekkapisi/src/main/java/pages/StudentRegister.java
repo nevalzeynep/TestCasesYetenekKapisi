@@ -29,8 +29,8 @@ public class StudentRegister {
 	    
 	
 	 //  test cases set 
-	 public void setName (String name)
-	 {
+	 public void setName (String name){
+		 
 		 driver.findElement(nameField).sendKeys(name);
 	 }
 	 

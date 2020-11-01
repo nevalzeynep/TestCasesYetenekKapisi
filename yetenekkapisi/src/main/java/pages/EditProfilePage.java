@@ -18,8 +18,13 @@ public class EditProfilePage {
 	private By tcknField=By.xpath("//input[@name='tckn']");
 	private By addressField=By.xpath("//textarea[@name='street']");
 	private By deleteBirtDateButton=By.xpath("//button[@class='react-datepicker__close-icon']");
+	private By phoneNumberField=By.xpath("//input[@name='phone']");
+	private By BirthDateField=By.xpath("//input[@class='birthDate']");
+	private By  gpaField=By.xpath("//input[@name='gpa']") ;
+	private By saveButton=By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[25]/button[1]");
 	private int GenderFlag; // 1 for Female, 0 for Male
-	//will continue
+	
+	
 	 public EditProfilePage(WebDriver driver) {
 	    	this.driver=driver;
 	    	
@@ -28,13 +33,13 @@ public class EditProfilePage {
 	
 	 public void SetName(String name) {
 		 
-			cleartextbox("//input[@name='name']");
+			cleartextbox(nameField);
 			driver.findElement(nameField).sendKeys(name);
 		}
 	 
 	    public void SetSurname(String Surname){
 	    	
-	    	cleartextbox("//input[@name='surname']");
+	    	cleartextbox(surnameField);
 	    	driver.findElement(surnameField).sendKeys(Surname);
 	    	
 	    }
@@ -42,23 +47,23 @@ public class EditProfilePage {
 	    public void setTckn(String tcno){
 	    	
 	    	
-	    	cleartextbox("//input[@name='tckn']");
+	    	cleartextbox(tcknField);
 	    	driver.findElement(tcknField).sendKeys(tcno);
 	    }
 	    
 	    public void setGender(int downCount,String gender) throws InterruptedException   {
 	    	
+	    	
 	    	if(gender=="male"){
-                
-	    	   selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[5]/div/div/div/div",downCount);
+
 	    	   GenderFlag=0; 
 	    	}
 	    	else if(gender=="female") {
-	    		 
-	    		selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[5]/div/div/div/div",downCount);
+
 	    		GenderFlag=1;
 	    		
 	    	}
+	    	selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[5]/div/div/div/div",downCount);
 	    	
 	    	
 	    }
@@ -72,46 +77,53 @@ public class EditProfilePage {
 	    
 	   
 	    
-	    public void setBirthDate(String BirthDate) throws InterruptedException {
+	    public void setBirthDate() throws InterruptedException {
 	    	
-	    	driver.findElement(deleteBirtDateButton).click();
+	    	Calender(BirthDateField);
 	    	
-	    	if (GenderFlag==0) // if male 
-	    		{
+	    	//driver.findElement(deleteBirtDateButton).click();
+	    	
+	    	//if (GenderFlag==0) // if male 
+	    	//{
 	    		
-	    		 AttributesValue("//input[@class='birthDate']",BirthDate);
-	    		 System.out.println("erkek "+GenderFlag);
-	    	}
-	    	else  // if female
-	    	{
+	    	// AttributesValue(BirthDateField,BirthDate);
+	    	// System.out.println("erkek "+GenderFlag);
+	    	//}
+	    	//else  // if female
+	    	//{
 	    		
-	    		AttributesValue("//input[@class='birthDate']",BirthDate);
-	    		System.out.println("kadýn "+ GenderFlag);
-	    	}
+	    	//AttributesValue(BirthDateField,BirthDate);
+	    	//System.out.println("kadýn "+ GenderFlag);
+	    	//}
+	    	
+	    	
+	    	
 	    }
 	    
 	    public void setPhoneNumber(String PhoneNumber) {
-	    	if (GenderFlag==0) // if male 
-    		{
-	    	  cleartextbox("//input[@name='phone']");
-	    	  AttributesValue("//input[@name='phone']",PhoneNumber);
-    		}
-	    	else // if female
-  		
-	    	{
-	    		 cleartextbox("//input[@name='phone']");
-		    	  AttributesValue("//input[@name='phone']",PhoneNumber);
-	    	}
+	    	
+	          cleartextbox(phoneNumberField);
+	    	  AttributesValue(phoneNumberField,PhoneNumber);
+
+	    	
 	    }
 	    
 	     public void setnationality(int downCount) throws InterruptedException{
+	    	 if(GenderFlag==0) // if male
+	    	 {
 	    	  
-	    	 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[8]/div/div/div/div",downCount);
+	    	 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[9]/div/div/div/div",downCount);
+	    	 
+	    	 }
+	    	 else // if female
+	    	 {
+	    		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[8]/div/div/div/div",downCount);
+	    	 }
 	     }
 	     
 	     
 	    public void setAddress(String address) {
-	    	
+	    	cleartextbox(addressField);
 	    	driver.findElement(addressField).sendKeys(address);
 	    }
 	    
@@ -119,19 +131,101 @@ public class EditProfilePage {
 	    
 	     public void setCountry(int downCount) throws InterruptedException {
 	    	 
-	    	 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[9]/div/ul/li[2]/div/div/div/div",downCount);
+	    	 if(GenderFlag==0) { // if male
+	    		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[10]/div/ul/li[2]/div/div/div/div",downCount);
+	    	 }
+	    	 else { // if female
+	    		 
+	    		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[9]/div/ul/li[2]/div/div/div/div",downCount);
+	    	 }
+	    		 
+	    		 
+	    	 
+	     }
+	     
+	     public void setCity(int downCount) throws InterruptedException{
+	    	 
+	    	 if(GenderFlag==0) { // if male
+	    		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[10]/div/ul/li[3]/div/div/div/div",downCount);
+	    	 }
+	    	 else { // if female
+	    		 
+	    		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[9]/div/ul/li[3]/div/div/div/div",downCount);
+	    	 }
+	     }
+	     
+	     public void setRadioButtons() throws InterruptedException  {
+	    	 
+	    	 if(GenderFlag==0) { // if male
+	    		 RadioButtonSelect("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[11]/div/label[2]/span[1]");
+	    		 RadioButtonSelect("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[12]/div/label[1]/span[1]");
+	    		 RadioButtonSelect("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[13]/div/label[2]/span[1]");
+	    		 
+	    	 }
+	    	 else { // if female
+	    		 RadioButtonSelect("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[10]/div/label[2]/span[1]");
+	    		 RadioButtonSelect("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[11]/div/label[1]/span[1]");
+	    		 RadioButtonSelect("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[12]/div/label[2]/span[1]");
+	    		 
+	    		 
+	    	 }
+	    	 
+	     }
+	     
+	 
+	     
+	     
+	     public void setClassLevel(int downCount) throws InterruptedException{
+	    	 
+	    	 if(GenderFlag==0) { // if male
+	    		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[19]/div/div/div/div",downCount);
+	    	 }
+	    	 else { // if female
+	    		 
+	    		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[18]/div/div/div/div",downCount);
+	    	 }
+	    	
+	     }
+	     
+	     public void setCareerStatus(int downCount) throws InterruptedException
+	     {
+	    	 if(GenderFlag==0) { // if male
+	    		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[20]/div/div/div/div",downCount);
+	    	 }
+	    	 else { // if female
+	    		 
+	    		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[19]/div/div/div/div",downCount);
+	    	 }
+	    	 
+	     }
+	     
+	     public void setGpa(String gpa) throws InterruptedException {
+	    	 cleartextbox(gpaField);
+	    	driver.findElement(gpaField).sendKeys(gpa);
+	    	 
+	    	 
+	     }
+	     
+	     public StudentDashboard clickSendButton()
+	     {
+	    	driver.findElement(saveButton).click();
+			return new StudentDashboard(driver);
+	    	 
 	     }
 	     
 	     
 	     
-
 	     
+	     
+	     
+	     
+	     //private methods
 	     
 	    // before sendkeys textbox  clean
 	     
-	    private void cleartextbox(String path) {
+	    private void cleartextbox(By path) {
 	    	
-	    	driver.findElement(By.xpath(path)).sendKeys(Keys.CONTROL, Keys.chord("a"),(Keys.BACK_SPACE)); //select all text in textbox and delete it
+	    	driver.findElement(path).sendKeys(Keys.CONTROL, Keys.chord("a"),(Keys.BACK_SPACE)); //select all text in textbox and delete it
 	    }
 	    
 	    
@@ -149,12 +243,12 @@ public class EditProfilePage {
 				 Actions keyDown = new Actions(driver); 
 				 for(int i=0;i<downCount;i++)
 				 {
-					 Thread.sleep(3000);
+					 Thread.sleep(1000);
 					 keyDown.sendKeys(Keys.chord( Keys.DOWN )).perform();
 					 Thread.sleep(2000);
 					 System.out.println("for girdi");
 				 }
-				 Thread.sleep(2000);
+				 
 				 keyDown.sendKeys(Keys.chord(Keys.ENTER )).perform();
 				 System.out.println(downCount);
 				 
@@ -162,9 +256,10 @@ public class EditProfilePage {
 				 }
 			 }
 	    
-	    private void AttributesValue(String path,String Value)  {
+	    
+	    private void AttributesValue(By path,String Value)  {
 	    	
-	    	 WebElement element = driver.findElement(By.xpath(path)); 
+	    	 WebElement element = driver.findElement(path); 
 	    	 JavascriptExecutor jse = (JavascriptExecutor)driver;
 	    	 jse.executeScript("arguments[0].value="+Value+";", element);
     		
@@ -172,7 +267,19 @@ public class EditProfilePage {
 	    
 	    
 	   
-	   
+	    private void RadioButtonSelect(String path) throws InterruptedException
+	    {
+			 WebElement ele = driver.findElement(By.xpath(path));
+			 JavascriptExecutor executor = (JavascriptExecutor)driver;
+			 executor.executeScript("arguments[0].click();", ele);
+			 Thread.sleep(2000);
+		 }
+	    // takvim icin value atamasý yapamýyorum o yuzden direk olarak istedigim tarihe týklamam gerekyior
+	    private void Calender(By path)
+	    {
+	    	driver.findElement(path).click();
+	    	driver.findElement(By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[7]/div/div[1]/div/div[2]/div/div[2]/div[2]/div[2]/div[7]")).click();
+	    }
 	   
 			 
  }

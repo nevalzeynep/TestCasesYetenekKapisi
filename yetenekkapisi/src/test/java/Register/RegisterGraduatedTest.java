@@ -11,10 +11,10 @@ public class RegisterGraduatedTest extends BaseTests{
 	public void succesGraduatedRegisterTest() throws InterruptedException
 	{
 		StudentRegister registerstd=LoginPage.clickStdRegisterButton();
-		registerstd.setName("test");
-		registerstd.setSurname("test");
+		registerstd.setName("sebiha");
+		registerstd.setSurname("gündeşli");
 		registerstd.setDisabledStatus(1);
-		registerstd.setEmail("test@denemdsdesdf.com");
+		registerstd.setEmail("s.s.gundesli@gmail.com");
 		registerstd.setPhone("123456");
 		registerstd.setStatus(0);
 		registerstd.setEducationType(1);

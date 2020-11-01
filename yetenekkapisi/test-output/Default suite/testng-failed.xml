@@ -5,8 +5,7 @@
     <classes>
       <class name="EdtiProfile.EditProfilTest">
         <methods>
-          <include name="TestSuccesEditProfile"/>
-          <include name="afterMethod"/>
+          <include name="TestSuccesEditProfileMale"/>
           <include name="setUp"/>
           <include name="tearDown"/>
         </methods>
