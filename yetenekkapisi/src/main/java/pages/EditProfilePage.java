@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-import com.google.common.primitives.Chars;
 
 public class EditProfilePage {
 	
@@ -243,14 +242,14 @@ public class EditProfilePage {
 				 Actions keyDown = new Actions(driver); 
 				 for(int i=0;i<downCount;i++)
 				 {
-					 Thread.sleep(1000);
+					
 					 keyDown.sendKeys(Keys.chord( Keys.DOWN )).perform();
 					 Thread.sleep(2000);
-					 System.out.println("for girdi");
+					
 				 }
 				 
 				 keyDown.sendKeys(Keys.chord(Keys.ENTER )).perform();
-				 System.out.println(downCount);
+				 
 				 
 				 
 				 }
@@ -274,6 +273,8 @@ public class EditProfilePage {
 			 executor.executeScript("arguments[0].click();", ele);
 			 Thread.sleep(2000);
 		 }
+	    
+	    
 	    // takvim icin value atamasý yapamýyorum o yuzden direk olarak istedigim tarihe týklamam gerekyior
 	    private void Calender(By path)
 	    {
