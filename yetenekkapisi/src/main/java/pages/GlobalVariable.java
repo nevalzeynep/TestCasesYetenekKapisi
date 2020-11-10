@@ -145,7 +145,7 @@ public class GlobalVariable {
 		 WebElement ele = driver.findElement(By.xpath(path));
 		 JavascriptExecutor executor = (JavascriptExecutor)driver;
 		 executor.executeScript("arguments[0].click();", ele);
-		 Thread.sleep(2000);
+		 Thread.sleep(3000);
 	 }
 
 }
