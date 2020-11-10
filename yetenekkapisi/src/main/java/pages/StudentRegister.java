@@ -7,127 +7,130 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-public class StudentRegister {
+public class StudentRegister extends GlobalVariable {
 	
 	private WebDriver driver;
-	private By nameField= (By.name("name"));
-	private By surnameField= (By.name("surname"));
-	private By emailField=By.name("email");
-	private By phoneField=By.name("phone");
-	private By departmentField=By.name("otherDepartment");
-	private By otherDepartmentField=By.name("otherDepartment");
-	private By clarificationTextButton=By.xpath("//*[@id=\"modalButton\"]");
-	
-	private By sendButton=By.xpath("//button[@class='icon btn btn-primary btn-sm']");
-	
+	private String genderFlag;
 	
 	
 	public StudentRegister(WebDriver driver) {
 	    	this.driver=driver;
 	    	
 	    }
-	    
+	
+	GlobalVariable gb=new GlobalVariable();
 	
 	 //  test cases set 
 	 public void setName (String name){
 		 
-		 driver.findElement(nameField).sendKeys(name);
+		 driver.findElement(gb.StudentRegisternameField).sendKeys(name);
 	 }
 	 
-	 public void setSurname(String surname)
-	 {
-		 driver.findElement(surnameField).sendKeys(surname);
+	 public void setSurname(String surname){
+		 
+		 driver.findElement(gb.StudentRegistersurnameField).sendKeys(surname);
 	 }
 	 
-	 public void setDisabledStatus(int flag) throws InterruptedException 
+	 public void setDisabledStatus(int countDown) throws InterruptedException 
 	 {
 		 
-		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[4]/div/div/div/div",flag);
+		 gb.selectWebElement(gb.StudentRegisterDisabledStatus,countDown,driver);
 	 }
 	 
 	 
 	 public void setEmail(String mail) {
-		 driver.findElement(emailField).sendKeys(mail);
+		 driver.findElement(StudentRegisteremailField).sendKeys(mail);
 	 }
 	 
 	 public void setPhone(String phone) {
-		 driver.findElement(phoneField).sendKeys(phone);
+		 driver.findElement(StudentRegisterphoneField).sendKeys(phone);
 	 }
 	 
 	 
-	 public void setStatus(int flag) throws InterruptedException
-	 {
-		
-		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[8]/div/div/div/div",flag);
-	 }
-	 
-	 
-	 public void setEducationType(int flag) throws InterruptedException
-	 {
+	 public void setEducationStatus(int countDown,String educationStatus) throws InterruptedException {
 		 
-		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[9]/div/div/div/div",flag);
+		
+		 gb.selectWebElement(gb.StudentRegisterEducationStatus,countDown,driver);
+		 
+		 if(educationStatus=="mezun")
+			 genderFlag="mezun";
+		 else
+			 genderFlag="std";
 	 }
 	 
 	 
-	 public void setClassLevel(int flag) throws InterruptedException
-	 
-	 {
-		 selectWebElement("/html/body/div/div[1]/div/div/main/div/div/div/div/form/div[10]/div/div/div/div", flag);
+	 public void setEducationType(int countDown) throws InterruptedException{
+		 
+		 gb.selectWebElement(gb.StudentRegisterEducationType,countDown,driver);
 	 }
 	 
 	 
-	 public void setCountry(int flag,int flag2) throws InterruptedException
-	 {
-		 if(flag2==0) {
-		     selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[10]/div/div/div/div",flag);
+	 public void setClassLevel(int countDown) throws InterruptedException {
+		 
+		 gb.selectWebElement(gb.StudentRegisterClassLevel, countDown,driver);
+		 
+	 }
+	 
+	 
+	 public void setCountry(int countDown) throws InterruptedException {
+		 
+		 if(genderFlag=="mezun") {
+			 
+			 gb.selectWebElement(gb.StudentRegisterCountryGraduated,countDown,driver);
+		     
 		 }
 		 
-		 else
-		 {
-			 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[11]/div/div/div/div",flag);
+		 else {
+			 
+			 gb.selectWebElement(gb.StudentRegisterCountryStudent,countDown,driver);
 		 }
 		
          
 	 }
 	 
 	 
-	 public void setUniversity(int flag,int flag2) throws InterruptedException
-	 {
-		 if(flag2==0) {
-			 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[11]/div/div/div/div",flag);
+	 public void setUniversity(int countDown) throws InterruptedException {
+		 
+		 if(genderFlag=="mezun") {
+			 
+			 gb. selectWebElement(gb.StudentRegisterUniversityGraduated,countDown,driver);
 		 }
 		 
 		 else {
-			 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[12]/div/div/div/div",flag);
+			 
+			 gb.selectWebElement(gb.StudentRegisterUniversityStudent,countDown,driver);
 		 }
 		
 	 }
 	 
 	 
-	 public void setDepartmentFromList(int flag,int flag2) throws InterruptedException
+	 public void setDepartmentFromList(int countDown) throws InterruptedException
 	 {
-		 if(flag2==0)
-		 {
-		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[12]/div/div/div/div",flag);
+		 if(genderFlag=="mezun") {
+			 
+			 gb.selectWebElement(gb.StudentRegisterDepartmentGraduated,countDown,driver);
 		 }
-		 else
-		 {
-			 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[13]/div/div/div/div",flag);
+		 
+		 else {
+			 
+			 gb.selectWebElement(gb.StudentRegisterDepartmentStudent,countDown,driver);
 		 }
 		 
 		 
 	 }
 	 
 	 
-	 public void setDepartment(String department,int flag2)
-	 {
-		 if(flag2==0)
-		 {
-		 driver.findElement(otherDepartmentField).sendKeys(department);
+	 public void setDepartment(String department) {
+		 
+		 if(genderFlag=="mezun") {
+			 
+		    driver.findElement(StudentRegisterotherDepartmentField).sendKeys(department);
 		 }
-		 else
-		 {
-			 driver.findElement(otherDepartmentField).sendKeys(department);
+		 
+		 else {
+			 
+			 
+			 driver.findElement(StudentRegisterotherDepartmentField).sendKeys(department);
 		 }
 	 }
 	 
@@ -136,47 +139,51 @@ public class StudentRegister {
 	 
 	  //click buttons methods
 	 
-	 public void clickClarifacitonButton(int flag2) throws InterruptedException
+	 public void clickClarifacitonButton() throws InterruptedException
 	    {
-		 if(flag2==0)//mezun
-		 {
-		JavaScriptElement("/html/body/div/div[1]/div/div/main/div/div/div/div/form/div[13]/span/button");
-		JavaScriptElement("/html/body/div[2]/div/div[1]/div/div/div[2]/div/div/div[2]/button");
-		 }
-		 else
-		 {
-			    JavaScriptElement("/html/body/div/div[1]/div/div/main/div/div/div/div/form/div[14]/span/button");
-				JavaScriptElement("/html/body/div[2]/div/div[1]/div/div/div[2]/div/div/div[2]/button");
-		 }
+		  if(genderFlag=="mezun") { //mezun
+			  
+			  gb.JavaScriptElement("/html/body/div/div[1]/div/div/main/div/div/div/div/form/div[13]/span/button");
+			  gb.JavaScriptElement("/html/body/div[2]/div/div[1]/div/div/div[2]/div/div/div[2]/button");
+		  }
+		 else  {
+			 
+			 gb.JavaScriptElement("/html/body/div/div[1]/div/div/main/div/div/div/div/form/div[14]/span/button");
+			 gb.JavaScriptElement("/html/body/div[2]/div/div[1]/div/div/div[2]/div/div/div[2]/button");
+		  }
 	 
 	    	
 	    }
-	 public void clickConsenText(int flag2,String onay) throws InterruptedException
+	 
+	 
+	 
+	 
+	 public void clickConsenText(String onay) throws InterruptedException
 	 {
 		
-		  if(flag2==0) // mezun
-		  {
-			     JavaScriptElement("/html/body/div/div[1]/div/div/main/div/div/div/div/form/div[14]/span/button");
-				 JavaScriptElement("/html/body/div[2]/div/div[1]/div/div/div[2]/div/div/div[2]/button");
-			  if(onay=="yes")
-			  {
+		  if(genderFlag=="mezun") 	  { // mezun
+			  
+			  gb.JavaScriptElement("/html/body/div/div[1]/div/div/main/div/div/div/div/form/div[14]/span/button");
+			  gb.JavaScriptElement("/html/body/div[2]/div/div[1]/div/div/div[2]/div/div/div[2]/button");
+			  if(onay=="yes") {
+				  
 				  driver.findElement(By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[14]/div/div/div/label[1]/span[1]")).click();
 			  }
-			  else
-			  {
+			  else {
+				  
 				  driver.findElement(By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[14]/div/div/div/label[2]/span[1]")).click();
 			  }
 		  }
-		  else// ogrenci
-		  {
-			     JavaScriptElement("/html/body/div/div[1]/div/div/main/div/div/div/div/form/div[15]/span/button");
-				 JavaScriptElement("/html/body/div[2]/div/div[1]/div/div/div[2]/div/div/div[2]/button");
-			  if(onay=="yes")
-			  {
+		  else  { // ogrenci
+			  
+			  gb.JavaScriptElement("/html/body/div/div[1]/div/div/main/div/div/div/div/form/div[15]/span/button");
+			  gb.JavaScriptElement("/html/body/div[2]/div/div[1]/div/div/div[2]/div/div/div[2]/button");
+			  if(onay=="yes")  {
+				  
 				  driver.findElement(By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[15]/div/div/div/label[1]/span[1]")).click();
 			  }
-			  else
-			  {
+			  else  {
+				  
 				  driver.findElement(By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[15]/div/div/div/label[2]/span[1]")).click();
 			  }
 			  
@@ -185,40 +192,17 @@ public class StudentRegister {
 	 }                    
 	
 	 
-	 public LoginPage clickSendButton()
-	 {
-		 driver.findElement(sendButton).click();
+	 public LoginPage clickSendButton(){
+		 driver.findElement(StudentRegistersendButton).click();
 		return new LoginPage(driver);
 		 
 	 }
 	 
 	 
-	 // private methods
 	 
-	 private void selectWebElement( String Path,int flag) throws InterruptedException 
-	 {
-		 Thread.sleep(2000);
-		 WebElement selectMyElement = driver.findElement(By.xpath(Path));
-		 selectMyElement.click();
-		 Actions keyDown = new Actions(driver); 
-		 for(int i=0;i<flag;i++)
-		 {
-			 keyDown.sendKeys(Keys.chord( Keys.DOWN )).perform();
-		 }
-		 keyDown.sendKeys(Keys.chord( Keys.ENTER )).perform();
-		 System.out.println(flag);
+	 
+	
 		 
-		 
-		 
-			 
-		 }
-		 
-	 private void JavaScriptElement(String path) throws InterruptedException
-	 {
-		 WebElement ele = driver.findElement(By.xpath(path));
-		 JavascriptExecutor executor = (JavascriptExecutor)driver;
-		 executor.executeScript("arguments[0].click();", ele);
-		 Thread.sleep(2000);
-	 }
+	 
 
 }

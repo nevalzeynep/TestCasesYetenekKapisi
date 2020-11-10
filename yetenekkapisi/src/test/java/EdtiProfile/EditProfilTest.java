@@ -13,23 +13,24 @@ public class EditProfilTest extends BaseTests {
 	{
 		LoginPage.setUsername("yekmogrenci@gmail.com");
 		LoginPage.setPassword("Y3K_StU3nt.462A.!");
-		StudentDashboard stdDashboard=LoginPage.clickStudentLogin();
-	    EditProfilePage editprofile=stdDashboard.clickEditProfileButton();
+		StudentDashboard stdDashboard=LoginPage.clickStudentLogin(); // loginpage creates student dashboard
+		
+	    EditProfilePage editprofile=stdDashboard.clickEditProfileButton(); 
 	    
 		editprofile.SetName("batuhan deneme");
 		editprofile.SetSurname("ekici deneme");
 		//editprofile.setTckn("41546586464");
-		editprofile.setGender(0,"male");  // 0 for countDown, male for GenderFlag
-		editprofile.setMilitaryServiceStatus(1); 
+		editprofile.setGender(0,"male");  // 0 for countdown for Dropdown, male for GenderFlag, 
+		editprofile.setMilitaryServiceStatus(1); // 1 for countdown for Dropdown
 		editprofile.setBirthDate();
 		editprofile.setPhoneNumber("555555555");
-		editprofile.setnationality(2);
+		editprofile.setnationality(2); //2 for countdown for Dropdown can be any number
 		editprofile.setAddress("deneme test çankaya yýldýz 4/2");
-		editprofile.setCountry(0);
-		editprofile.setCity(1);
+		editprofile.setCountry(0);// for dropdown 
+		editprofile.setCity(1);// for dropdown 
 		editprofile.setRadioButtons();
-		editprofile.setClassLevel(0);
-		editprofile.setCareerStatus(0);
+		editprofile.setClassLevel(0);// for dropdown 
+		editprofile.setCareerStatus(0);// for dropdown 
 		editprofile.setGpa("315");
 		editprofile.clickSendButton();
 		

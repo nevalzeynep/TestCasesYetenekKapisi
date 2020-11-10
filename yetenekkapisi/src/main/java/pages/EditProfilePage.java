@@ -8,61 +8,56 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 
-public class EditProfilePage {
-	
-	
+public class EditProfilePage extends GlobalVariable {
 	private WebDriver driver;
-	private By nameField=By.xpath("//input[@name='name']");
-	private By surnameField=By.xpath("//input[@name='surname']");
-	private By tcknField=By.xpath("//input[@name='tckn']");
-	private By addressField=By.xpath("//textarea[@name='street']");
-	private By deleteBirtDateButton=By.xpath("//button[@class='react-datepicker__close-icon']");
-	private By phoneNumberField=By.xpath("//input[@name='phone']");
-	private By BirthDateField=By.xpath("//input[@class='birthDate']");
-	private By  gpaField=By.xpath("//input[@name='gpa']") ;
-	private By saveButton=By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[25]/button[1]");
 	private int GenderFlag; // 1 for Female, 0 for Male
 	
+	GlobalVariable gb=new GlobalVariable(driver);
 	
 	 public EditProfilePage(WebDriver driver) {
 	    	this.driver=driver;
 	    	
 	    }
 	 
-	
+	 
 	 public void SetName(String name) {
 		 
-			cleartextbox(nameField);
-			driver.findElement(nameField).sendKeys(name);
+		   
+			gb.cleartextbox(gb.StudentEditProfilenameField,driver);
+			driver.findElement(gb.StudentEditProfilenameField).sendKeys(name);
 		}
 	 
 	    public void SetSurname(String Surname){
 	    	
-	    	cleartextbox(surnameField);
-	    	driver.findElement(surnameField).sendKeys(Surname);
+	    	gb.cleartextbox(gb.StudentEditProfilesurnameField,driver);
+	    	driver.findElement(gb.StudentEditProfilesurnameField).sendKeys(Surname);
 	    	
 	    }
 	    
 	    public void setTckn(String tcno){
 	    	
 	    	
-	    	cleartextbox(tcknField);
-	    	driver.findElement(tcknField).sendKeys(tcno);
+	    	gb.cleartextbox(gb.StudentEditProfiletcknField,driver);
+	    	driver.findElement(gb.StudentEditProfiletcknField).sendKeys(tcno);
 	    }
 	    
 	    public void setGender(int downCount,String gender) throws InterruptedException   {
 	    	
 	    	
-	    	if(gender=="male"){
+	    	
+	    	if(gender=="male"){  
 
-	    	   GenderFlag=0; 
+	    	   GenderFlag=0;  //path continue to male
 	    	}
+	    	
+	    	
 	    	else if(gender=="female") {
 
-	    		GenderFlag=1;
+	    		GenderFlag=1; //path continue to female
 	    		
 	    	}
-	    	selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[5]/div/div/div/div",downCount);
+	    	
+	    	selectWebElement(gb.StudentEditProfileGender,downCount,driver);
 	    	
 	    	
 	    }
@@ -70,7 +65,8 @@ public class EditProfilePage {
 	    public void setMilitaryServiceStatus(int downCount) throws InterruptedException {
 	    	
 	    	
-	    	selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[6]/div/div/div/div",downCount);
+	    	selectWebElement(gb.StudentEditProfileMilitary,downCount,driver);
+	    	
 	    }
 	    
 	    
@@ -78,7 +74,7 @@ public class EditProfilePage {
 	    
 	    public void setBirthDate() throws InterruptedException {
 	    	
-	    	Calender(BirthDateField);
+	    	Calender(gb.StudentEditProfileBirthDateField);
 	    	
 	    	//driver.findElement(deleteBirtDateButton).click();
 	    	
@@ -101,8 +97,8 @@ public class EditProfilePage {
 	    
 	    public void setPhoneNumber(String PhoneNumber) {
 	    	
-	          cleartextbox(phoneNumberField);
-	    	  AttributesValue(phoneNumberField,PhoneNumber);
+	          gb.cleartextbox(gb.StudentEditProfilephoneNumberField,driver);
+	    	  AttributesValue(gb.StudentEditProfilephoneNumberField,PhoneNumber);
 
 	    	
 	    }
@@ -111,19 +107,19 @@ public class EditProfilePage {
 	    	 if(GenderFlag==0) // if male
 	    	 {
 	    	  
-	    	 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[9]/div/div/div/div",downCount);
+	    	 selectWebElement(gb.StudentEditProfileNationalityMale,downCount,driver);
 	    	 
 	    	 }
 	    	 else // if female
 	    	 {
-	    		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[8]/div/div/div/div",downCount);
+	    		 selectWebElement(gb.StudentEditProfileNationalityFemale,downCount,driver);
 	    	 }
 	     }
 	     
 	     
 	    public void setAddress(String address) {
-	    	cleartextbox(addressField);
-	    	driver.findElement(addressField).sendKeys(address);
+	    	gb.cleartextbox(gb.StudentEditProfileaddressField,driver);
+	    	driver.findElement(gb.StudentEditProfileaddressField).sendKeys(address);
 	    }
 	    
 	    
@@ -131,11 +127,11 @@ public class EditProfilePage {
 	     public void setCountry(int downCount) throws InterruptedException {
 	    	 
 	    	 if(GenderFlag==0) { // if male
-	    		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[10]/div/ul/li[2]/div/div/div/div",downCount);
+	    		 selectWebElement(gb.StudentEditProfileCountryMale,downCount,driver);
 	    	 }
 	    	 else { // if female
 	    		 
-	    		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[9]/div/ul/li[2]/div/div/div/div",downCount);
+	    		 selectWebElement(gb.StudentEditProfilCountryFemale,downCount,driver);
 	    	 }
 	    		 
 	    		 
@@ -145,11 +141,11 @@ public class EditProfilePage {
 	     public void setCity(int downCount) throws InterruptedException{
 	    	 
 	    	 if(GenderFlag==0) { // if male
-	    		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[10]/div/ul/li[3]/div/div/div/div",downCount);
+	    		 selectWebElement(gb.StudentEditProfileCityMale,downCount,driver);
 	    	 }
 	    	 else { // if female
 	    		 
-	    		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[9]/div/ul/li[3]/div/div/div/div",downCount);
+	    		 selectWebElement(gb.StudentEditProfileCityFemale,downCount,driver);
 	    	 }
 	     }
 	     
@@ -177,11 +173,11 @@ public class EditProfilePage {
 	     public void setClassLevel(int downCount) throws InterruptedException{
 	    	 
 	    	 if(GenderFlag==0) { // if male
-	    		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[19]/div/div/div/div",downCount);
+	    		 selectWebElement(gb.StudentEditProfileClassMale,downCount,driver);
 	    	 }
 	    	 else { // if female
 	    		 
-	    		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[18]/div/div/div/div",downCount);
+	    		 selectWebElement(gb.StudentEditProfileClassFeMale,downCount,driver);
 	    	 }
 	    	
 	     }
@@ -189,25 +185,26 @@ public class EditProfilePage {
 	     public void setCareerStatus(int downCount) throws InterruptedException
 	     {
 	    	 if(GenderFlag==0) { // if male
-	    		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[20]/div/div/div/div",downCount);
+	    		 
+	    		 selectWebElement(gb.StudentEditProfileCareerMale,downCount,driver);
 	    	 }
 	    	 else { // if female
 	    		 
-	    		 selectWebElement("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[19]/div/div/div/div",downCount);
+	    		 selectWebElement(gb.StudentEditProfileCareerFeMale,downCount,driver);
 	    	 }
 	    	 
 	     }
 	     
 	     public void setGpa(String gpa) throws InterruptedException {
-	    	 cleartextbox(gpaField);
-	    	driver.findElement(gpaField).sendKeys(gpa);
+	    	 gb.cleartextbox(gb.StudentEditProfilegpaField,driver);
+	    	driver.findElement(gb.StudentEditProfilegpaField).sendKeys(gpa);
 	    	 
 	    	 
 	     }
 	     
 	     public StudentDashboard clickSendButton()
 	     {
-	    	driver.findElement(saveButton).click();
+	    	driver.findElement(gb.StudentEditProfilesaveButton).click();
 			return new StudentDashboard(driver);
 	    	 
 	     }
@@ -222,38 +219,10 @@ public class EditProfilePage {
 	     
 	    // before sendkeys textbox  clean
 	     
-	    private void cleartextbox(By path) {
-	    	
-	    	driver.findElement(path).sendKeys(Keys.CONTROL, Keys.chord("a"),(Keys.BACK_SPACE)); //select all text in textbox and delete it
-	    }
+	   
 	    
 	    
 	    
-	    
-	    private void selectWebElement( String Path,int downCount) throws InterruptedException  {
-			 Thread.sleep(2000);
-			 if(downCount==-1)
-			 {
-				 return;
-			 }
-			 else {
-				 WebElement selectMyElement = driver.findElement(By.xpath(Path));
-				 selectMyElement.click();
-				 Actions keyDown = new Actions(driver); 
-				 for(int i=0;i<downCount;i++)
-				 {
-					
-					 keyDown.sendKeys(Keys.chord( Keys.DOWN )).perform();
-					 Thread.sleep(2000);
-					
-				 }
-				 
-				 keyDown.sendKeys(Keys.chord(Keys.ENTER )).perform();
-				 
-				 
-				 
-				 }
-			 }
 	    
 	    
 	    private void AttributesValue(By path,String Value)  {
@@ -279,7 +248,7 @@ public class EditProfilePage {
 	    private void Calender(By path)
 	    {
 	    	driver.findElement(path).click();
-	    	driver.findElement(By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[7]/div/div[1]/div/div[2]/div/div[2]/div[2]/div[2]/div[7]")).click();
+	    	driver.findElement(By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div[1]/div/div/div[1]/form/div[7]/div/div[1]/div/div[2]/div/div[2]/div[2]/div[3]/div[4]")).click();
 	    }
 	   
 			 

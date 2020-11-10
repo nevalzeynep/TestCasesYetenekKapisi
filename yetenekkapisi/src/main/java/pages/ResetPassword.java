@@ -3,19 +3,19 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class ResetPassword {
+public class ResetPassword extends GlobalVariable {
 	private WebDriver driver;
-	private By EmailField=By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/form/div[1]/div[1]/div[2]/input");
-	private By PhoneRadioButton=By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/form/div[1]/div[2]/div[1]/label/span[1]");
-	private By EmailRadioButton=By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/form/div[1]/div[2]/div[3]/label/span[1]");
-	private By SendLinkButton=By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/form/div[2]/button");
+	
+	
+	GlobalVariable gb=new GlobalVariable(driver);
+	
 	public ResetPassword(WebDriver driver) {
     	this.driver=driver;
     	
     }
 	
 	public void setEmail(String email) {
-		driver.findElement(EmailField).sendKeys(email);
+		driver.findElement(StudentResetPasswordEmailField).sendKeys(email);
 		
 	}
 	
@@ -23,16 +23,16 @@ public class ResetPassword {
 	
 	public LoginPage clickEmailLink()
 	{
-		driver.findElement(EmailRadioButton).click();
-		driver.findElement(SendLinkButton).click();
+		driver.findElement(StudentResetPasswordEmailRadioButton).click();
+		driver.findElement(StudentResetPasswordSendLinkButton).click();
 		return new LoginPage(driver);
 		
 		
 	}
 	public LoginPage clickPhoneLink()
 	{
-		driver.findElement(PhoneRadioButton).click();
-		driver.findElement(SendLinkButton).click();
+		driver.findElement(StudentResetPasswordPhoneRadioButton).click();
+		driver.findElement(StudentResetPasswordSendLinkButton).click();
 		return new LoginPage(driver);
 		
 	}

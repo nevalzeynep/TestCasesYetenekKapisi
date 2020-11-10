@@ -6,46 +6,48 @@ import Base.BaseTests;
 import pages.StudentRegister;
 
 public class RegisterGraduatedTest extends BaseTests{
-	@Test (priority=0)
+	@Test (priority=1)
 	
-	public void succesGraduatedRegisterTest() throws InterruptedException
-	{
+	public void succesGraduatedRegisterTest() throws InterruptedException{
+		
 		StudentRegister registerstd=LoginPage.clickStdRegisterButton();
 		registerstd.setName("sebiha");
 		registerstd.setSurname("gündeþli");
 		registerstd.setDisabledStatus(1);
-		registerstd.setEmail("s.s.gundesli@gmail.com");
+		registerstd.setEmail("s.s.gundesli@gmaiiiil.com");
 		registerstd.setPhone("123456");
-		registerstd.setStatus(0);
+		registerstd.setEducationStatus(0,"mezun");
 		registerstd.setEducationType(1);
-		registerstd.setCountry(0,0);
-		registerstd.setUniversity(1,0);
-		registerstd.setDepartmentFromList(0,0);
-		registerstd.clickClarifacitonButton(0);
-		registerstd.clickConsenText(0, "yes");
+		registerstd.setCountry(0);
+		registerstd.setUniversity(1);
+		registerstd.setDepartmentFromList(0);
+		//registerstd.clickClarifacitonButton();
+		//registerstd.clickConsenText( "yes");
 		registerstd.clickSendButton();
 		
 		
 	}
-	@Test(priority=1)
-	public void succesGraduatedOtherCountryRegisterTest() throws InterruptedException
-	{
+	@Test (priority=0)
+	public void successGraduatedOtherRegistertest() throws InterruptedException{
 		
 		StudentRegister registerstd=LoginPage.clickStdRegisterButton();
-		registerstd.setName("test");
-		registerstd.setSurname("test");
-		registerstd.setDisabledStatus(1);
-		registerstd.setEmail("test@dednemde.ccdcom");
+		registerstd.setName("deneme");
+		registerstd.setSurname("gündeþli");
+		registerstd.setDisabledStatus(0);
+		registerstd.setEmail("s.s.gundesli@gmail.com");
 		registerstd.setPhone("123456");
-		registerstd.setStatus(0);
-		registerstd.setEducationType(0);
-		registerstd.setCountry(1,0);
-		registerstd.setUniversity(0,0);
-		registerstd.setDepartment("computer engineering",0);
-		registerstd.clickClarifacitonButton(0);
-		registerstd.clickConsenText(0, "yes");
+		registerstd.setEducationStatus(0,"mezun");
+		registerstd.setEducationType(1);
+		registerstd.setCountry(5);
+		registerstd.setUniversity(1);
+		
+		registerstd.setDepartment("Computer Engineering");
+		//registerstd.clickClarifacitonButton();
+		//registerstd.clickConsenText( "yes");
 		registerstd.clickSendButton();
 	}
+	
+	
 	
 	
 

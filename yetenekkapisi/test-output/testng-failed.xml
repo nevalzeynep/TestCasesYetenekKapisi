@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="EdtiProfile.EditProfilTest">
+      <class name="Register.RegisterStudentTest">
         <methods>
-          <include name="TestSuccesEditProfileMale"/>
           <include name="setUp"/>
+          <include name="succesStudentRegisterTest"/>
           <include name="tearDown"/>
         </methods>
-      </class> <!-- EdtiProfile.EditProfilTest -->
+      </class> <!-- Register.RegisterStudentTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
