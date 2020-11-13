@@ -16,7 +16,7 @@ public class EditProfilTest extends BaseTests {
 		StudentDashboard stdDashboard=LoginPage.clickStudentLogin(); // loginpage creates student dashboard
 		
 	    EditProfilePage editprofile=stdDashboard.clickEditProfileButton(); 
-	    
+	    editprofile.setPhoto();
 		editprofile.SetName("batuhan deneme");
 		editprofile.SetSurname("ekici deneme");
 		//editprofile.setTckn("41546586464");
@@ -31,7 +31,8 @@ public class EditProfilTest extends BaseTests {
 		editprofile.setRadioButtons();
 		editprofile.setClassLevel(0);// for dropdown 
 		editprofile.setCareerStatus(0);// for dropdown 
-		editprofile.setGpa("315");
+		editprofile.setGpa("400");
+		
 		editprofile.clickSendButton();
 		
 		

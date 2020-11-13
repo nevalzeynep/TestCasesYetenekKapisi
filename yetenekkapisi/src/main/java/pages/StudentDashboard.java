@@ -18,19 +18,25 @@ public class StudentDashboard extends GlobalVariable{
 	
 	//clickbutton methods
 	
-	public EditProfilePage clickEditProfileButton()
-	{
+	public EditProfilePage clickEditProfileButton(){
+		
 		driver.findElement(StudentDashboardaccountButton).click();
-		clickLinkText("Özel Profil");
+		clickLinkText("Özel Profil",driver);
 		
 		return new EditProfilePage(driver) ;
 		
 	}
 	
-	private void clickLinkText(String LinkText)
-	{
-		driver.findElement(By.linkText(LinkText)).click();
+	public Experiences clickExperiencesButton(){
+		
+		driver.findElement(StudentDashboardaccountButton).click();
+		clickLinkText("Deneyimler",driver);
+		return new Experiences(driver);
+		
+		
 	}
+	
+	
 	
 	
 	

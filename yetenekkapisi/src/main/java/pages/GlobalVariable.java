@@ -109,6 +109,39 @@ public class GlobalVariable {
 	
 	
 	
+	//STUDENT EXPERIENCES
+	protected By StudentExperiencesAddNew=By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div/div/div/div[2]/div/div/div/div/div[1]/div/div[1]/a/button");
+	protected By StudentExperiencesEditButton=By.id("editButtonId_40136");
+	protected By StudentExperiencesDeleteButton=By.xpath("//*[@id=\"delete_40134\"]");
+	protected By StudentExperiencesConfirmDelete=By.xpath("//button[@class='btn btn-primary']"); // Delete
+	protected By StudentExpreiencesCancelDelete=By.xpath("//button[@class='btn btn-secondary']");
+	
+	
+	//STUDENT NEWCAREER
+	
+	protected By StudentNewCareerEmployerField=By.xpath("//input[@name='otherCompany']");
+	protected By StudentNewCareerPositionField=By.xpath("//input[@name='position']");
+	protected By StudentNewCareerStarDate=By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div[2]/div/div/div/form/div[3]/div/div[1]/div/div[1]/div/input");
+	protected By StudentNewCareerCareerStatus=By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div[2]/div/div/div/form/div[4]/div/div/div/div");
+	protected By StudentNewCareerCareerStatusValue=By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div[2]/div/div/div/form/div[4]/div/div/div/input");
+	
+	protected By StudentNewCareerDescription=By.xpath("//textarea[@name='description']");
+	protected By StudentNewCareerSubmitButton=By.xpath("//button[@type='submit']");
+	
+	
+	
+	
+	
+	
+	
+	// STUDENT EDIT CAREER
+	protected By StudentEditCareerSubmitButton=By.xpath("//button[@class='icon btn btn-primary btn-sm']");
+	protected By StudentEditCareerEmployerField=By.xpath("//input[@name='otherCompany']");
+	protected By StudenteditCareerBackButton=By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div[1]/div/div/button/b");
+    
+	
+	
+	//STUDENT NEW SKILL
 	
 	
 	
@@ -118,9 +151,21 @@ public class GlobalVariable {
 	
 	
 	
-	protected void cleartextbox(By path,WebDriver driver) {
+	
+	
+	
+	
+	
+	
+	
+	
+	//Global Methods
+	
+	
+	protected void cleartextbox(By Path,WebDriver driver) throws InterruptedException {
     	
-    	driver.findElement(path).sendKeys(Keys.CONTROL, Keys.chord("a"),(Keys.BACK_SPACE)); //select all text in textbox and delete it
+    	driver.findElement(Path).sendKeys(Keys.CONTROL, Keys.chord("a"),(Keys.BACK_SPACE)); //select all text in textbox and delete it
+    	Thread.sleep(2000);
     }
 	
     protected void selectWebElement( By Path,int countDown,WebDriver driver) throws InterruptedException  {
@@ -147,5 +192,16 @@ public class GlobalVariable {
 		 executor.executeScript("arguments[0].click();", ele);
 		 Thread.sleep(3000);
 	 }
+    
+    protected void clickLinkText(String LinkText,WebDriver driver){
+		driver.findElement(By.linkText(LinkText)).click();
+	}
+    
+   protected String FindValue(By ValuePath,WebDriver driver) // value ile flag deðiþimi için
+   {
+	    WebElement searchTextBox= driver.findElement(ValuePath);
+		String typeValue=searchTextBox.getAttribute("value");
+	    return typeValue;
+   }
 
 }

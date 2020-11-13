@@ -20,21 +20,21 @@ public class EditProfilePage extends GlobalVariable {
 	    }
 	 
 	 
-	 public void SetName(String name) {
+	 public void SetName(String name) throws InterruptedException {
 		 
 		   
 			gb.cleartextbox(gb.StudentEditProfilenameField,driver);
 			driver.findElement(gb.StudentEditProfilenameField).sendKeys(name);
 		}
 	 
-	    public void SetSurname(String Surname){
+	    public void SetSurname(String Surname) throws InterruptedException{
 	    	
 	    	gb.cleartextbox(gb.StudentEditProfilesurnameField,driver);
 	    	driver.findElement(gb.StudentEditProfilesurnameField).sendKeys(Surname);
 	    	
 	    }
 	    
-	    public void setTckn(String tcno){
+	    public void setTckn(String tcno) throws InterruptedException{
 	    	
 	    	
 	    	gb.cleartextbox(gb.StudentEditProfiletcknField,driver);
@@ -76,26 +76,13 @@ public class EditProfilePage extends GlobalVariable {
 	    	
 	    	Calender(gb.StudentEditProfileBirthDateField);
 	    	
-	    	//driver.findElement(deleteBirtDateButton).click();
 	    	
-	    	//if (GenderFlag==0) // if male 
-	    	//{
-	    		
-	    	// AttributesValue(BirthDateField,BirthDate);
-	    	// System.out.println("erkek "+GenderFlag);
-	    	//}
-	    	//else  // if female
-	    	//{
-	    		
-	    	//AttributesValue(BirthDateField,BirthDate);
-	    	//System.out.println("kadýn "+ GenderFlag);
-	    	//}
 	    	
 	    	
 	    	
 	    }
 	    
-	    public void setPhoneNumber(String PhoneNumber) {
+	    public void setPhoneNumber(String PhoneNumber) throws InterruptedException {
 	    	
 	          gb.cleartextbox(gb.StudentEditProfilephoneNumberField,driver);
 	    	  AttributesValue(gb.StudentEditProfilephoneNumberField,PhoneNumber);
@@ -117,7 +104,8 @@ public class EditProfilePage extends GlobalVariable {
 	     }
 	     
 	     
-	    public void setAddress(String address) {
+	    public void setAddress(String address) throws InterruptedException {
+	    	
 	    	gb.cleartextbox(gb.StudentEditProfileaddressField,driver);
 	    	driver.findElement(gb.StudentEditProfileaddressField).sendKeys(address);
 	    }
@@ -201,6 +189,17 @@ public class EditProfilePage extends GlobalVariable {
 	    	 
 	    	 
 	     }
+	      public void setPhoto()
+	      {
+	    	  
+	      }
+	     
+	     
+	     
+	     
+	     
+	     // click methods
+	     
 	     
 	     public StudentDashboard clickSendButton()
 	     {
@@ -208,23 +207,12 @@ public class EditProfilePage extends GlobalVariable {
 			return new StudentDashboard(driver);
 	    	 
 	     }
-	     
-	     
-	     
-	     
-	     
+     
 	     
 	     
 	     //private methods
 	     
-	    // before sendkeys textbox  clean
-	     
-	   
-	    
-	    
-	    
-	    
-	    
+
 	    private void AttributesValue(By path,String Value)  {
 	    	
 	    	 WebElement element = driver.findElement(path); 
