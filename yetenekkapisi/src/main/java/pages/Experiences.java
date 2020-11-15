@@ -43,5 +43,15 @@ private WebDriver driver;
 		clickLinkText("Yeni Ekle",driver);	
 		
 	}
+	public void setSkillName(String SkillName) {
+		driver.findElement(gb.StudentSkillNewSkillName).sendKeys(SkillName);
+		
+	}
+	public void setstudentSkillLevel(int countDown) throws InterruptedException{
+		gb.selectWebElement(gb.StudentSkillNewSkillLevel, countDown, driver);
+	}
+	public void setDescription(String Description) {
+		driver.findElement(gb.StudentSkillNewDescription).sendKeys(Description);
+	}
 
 }

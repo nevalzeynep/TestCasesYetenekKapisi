@@ -54,8 +54,9 @@ public class GlobalVariable {
 	protected By StudentRegisterUniversityStudent=By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[12]/div/div/div/div");
 	protected By StudentRegisterDepartmentGraduated=By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[12]/div/div/div/div");
 	protected By StudentRegisterDepartmentStudent=By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[13]/div/div/div/div");	
-	
-	
+	protected By StudentRegisterGraduateStatusValue=By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/div/form/div[8]/div/div/div/input");
+	    // Alert message for student register
+	protected By StudentRegisterAlertMessage=By.xpath("//span[@class='form__form-group-error']");
 	
 	
 	
@@ -94,6 +95,8 @@ public class GlobalVariable {
 	protected By StudentResetPasswordPhoneRadioButton=By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/form/div[1]/div[2]/div[1]/label/span[1]");
 	protected By StudentResetPasswordEmailRadioButton=By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/form/div[1]/div[2]/div[3]/label/span[1]");
 	protected By StudentResetPasswordSendLinkButton=By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div/div/form/div[2]/button");
+	protected By StudentResetPasswordAlertText=By.xpath("//div[@class='notification-message']");
+	
 	
 	
 	
@@ -144,9 +147,9 @@ public class GlobalVariable {
 	//STUDENT NEW SKILL
 	
 	
-	
-	
-	
+	protected By StudentSkillNewSkillName=By.xpath("//input[@name='skillname']");
+	protected By StudentSkillNewSkillLevel=By.xpath("//*[@id=\"root\"]/div[1]/div/div/main/div/div[2]/div/div[2]/div/div/div/form/div[2]/div/div/div/div");
+	protected By StudentSkillNewDescription=By.xpath("//textarea[@name='description']");
 	
 	
 	
@@ -197,11 +200,18 @@ public class GlobalVariable {
 		driver.findElement(By.linkText(LinkText)).click();
 	}
     
-   protected String FindValue(By ValuePath,WebDriver driver) // value ile flag deðiþimi için
+   protected String FindValue(By ValuePath,WebDriver driver) // drop listten seçilen value deðerine göre locater sýrasý deðiþiyor  bu yüzden hangisi seçilmiþ tutuyoruz
    {
 	    WebElement searchTextBox= driver.findElement(ValuePath);
 		String typeValue=searchTextBox.getAttribute("value");
 	    return typeValue;
    }
 
+   protected int StringToInteger(String typeValue)
+   {
+	   int intValue = Integer.parseInt(typeValue);
+	   
+	   return intValue;
+	   
+   }
 }

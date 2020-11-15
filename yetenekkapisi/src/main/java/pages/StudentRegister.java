@@ -47,15 +47,19 @@ public class StudentRegister extends GlobalVariable {
 	 }
 	 
 	 
-	 public void setEducationStatus(int countDown,String educationStatus) throws InterruptedException {
+	 public void setEducationStatus(int countDown) throws InterruptedException {
 		 
 		
-		 gb.selectWebElement(gb.StudentRegisterEducationStatus,countDown,driver);
-		 
-		 if(educationStatus=="mezun")
-			 genderFlag="mezun";
-		 else
-			 genderFlag="std";
+		 gb.selectWebElement(gb.StudentRegisterEducationStatus,countDown,driver); 
+		 String typeValueString= gb.FindValue(gb.StudentRegisterGraduateStatusValue,driver); // Find value return String 
+		 int typeValue=gb.StringToInteger(typeValueString); // convert integer,1 for student
+		 System.out.println(typeValue);
+		
+		  
+		 if (typeValue==1)
+				genderFlag="Student";
+			else if(typeValue==0)
+				genderFlag="Graduated";
 	 }
 	 
 	 
@@ -74,7 +78,7 @@ public class StudentRegister extends GlobalVariable {
 	 
 	 public void setCountry(int countDown) throws InterruptedException {
 		 
-		 if(genderFlag=="mezun") {
+		 if(genderFlag=="Graduated") {
 			 
 			 gb.selectWebElement(gb.StudentRegisterCountryGraduated,countDown,driver);
 		     
@@ -91,7 +95,7 @@ public class StudentRegister extends GlobalVariable {
 	 
 	 public void setUniversity(int countDown) throws InterruptedException {
 		 
-		 if(genderFlag=="mezun") {
+		 if(genderFlag=="Graduated") {
 			 
 			 gb. selectWebElement(gb.StudentRegisterUniversityGraduated,countDown,driver);
 		 }
@@ -106,7 +110,7 @@ public class StudentRegister extends GlobalVariable {
 	 
 	 public void setDepartmentFromList(int countDown) throws InterruptedException
 	 {
-		 if(genderFlag=="mezun") {
+		 if(genderFlag=="Graduated") {
 			 
 			 gb.selectWebElement(gb.StudentRegisterDepartmentGraduated,countDown,driver);
 		 }
@@ -122,7 +126,7 @@ public class StudentRegister extends GlobalVariable {
 	 
 	 public void setDepartment(String department) {
 		 
-		 if(genderFlag=="mezun") {
+		 if(genderFlag=="Graduated") {
 			 
 		    driver.findElement(StudentRegisterotherDepartmentField).sendKeys(department);
 		 }
@@ -141,7 +145,7 @@ public class StudentRegister extends GlobalVariable {
 	 
 	 public void clickClarifacitonButton() throws InterruptedException
 	    {
-		  if(genderFlag=="mezun") { //mezun
+		  if(genderFlag=="Graduated") { //mezun
 			  
 			  gb.JavaScriptElement("/html/body/div/div[1]/div/div/main/div/div/div/div/form/div[13]/span/button");
 			  gb.JavaScriptElement("/html/body/div[2]/div/div[1]/div/div/div[2]/div/div/div[2]/button");
@@ -161,7 +165,7 @@ public class StudentRegister extends GlobalVariable {
 	 public void clickConsenText(String onay) throws InterruptedException
 	 {
 		
-		  if(genderFlag=="mezun") 	  { // mezun
+		  if(genderFlag=="Graduated") 	  { // mezun
 			  
 			  gb.JavaScriptElement("/html/body/div/div[1]/div/div/main/div/div/div/div/form/div[14]/span/button");
 			  gb.JavaScriptElement("/html/body/div[2]/div/div[1]/div/div/div[2]/div/div/div[2]/button");
@@ -197,6 +201,14 @@ public class StudentRegister extends GlobalVariable {
 		return new LoginPage(driver);
 		 
 	 }
+	 
+	 public String getAlertTextRegister()
+		{
+			WebElement element = driver.findElement(gb.StudentRegisterAlertMessage);
+			String content = (String) ((JavascriptExecutor) driver).executeScript("return arguments[0].innerHTML", element);
+			return content;
+			
+		}
 	 
 	 
 	 
